@@ -41,13 +41,13 @@ public class Joystick : MonoBehaviour
         /// </summary>
         ldle,
         /// <summary>
-        /// 初始
+        /// 抬起
         /// </summary>
-        Init,
+        TouchUp,
         /// <summary>
         /// 按下
         /// </summary>
-        Touch,
+        TouchDown,
         /// <summary>
         /// 准备
         /// </summary>
@@ -80,7 +80,7 @@ public class Joystick : MonoBehaviour
 
 
     /// <summary>
-    /// 摇杆初始位置
+    /// 摇杆抬起位置
     /// </summary>
     public Vector3 joystickInitPosition = new Vector3(165f, 165f, 0f);
     /// <summary>
@@ -169,11 +169,11 @@ public class Joystick : MonoBehaviour
     {
         if (varPress == true)
         {
-            SwitchJoyStickState(JoystickState.Touch);
+            SwitchJoyStickState(JoystickState.TouchDown);
         }
         else
         {
-            SwitchJoyStickState(JoystickState.Init);
+            SwitchJoyStickState(JoystickState.TouchUp);
         }
     }
 
@@ -202,14 +202,14 @@ public class Joystick : MonoBehaviour
 
         switch (joystickState)
         {
-            case JoystickState.Init:
+            case JoystickState.TouchUp:
 
                 InitState();
 
                 SwitchJoyStickState(JoystickState.ldle);
 
                 break;
-            case JoystickState.Touch:
+            case JoystickState.TouchDown:
 
                 TouchState();
 
@@ -248,7 +248,7 @@ public class Joystick : MonoBehaviour
     }
 
     /// <summary>
-    /// 初始动作
+    /// 抬起动作
     /// </summary>
     void InitState()
     {
@@ -256,7 +256,7 @@ public class Joystick : MonoBehaviour
         stick.localPosition = Vector3.zero;
         direction.gameObject.SetActive(false);
 
-        //设置虚拟摇杆 初始 触发区域
+        //设置虚拟摇杆 抬起 触发区域
         triggereBox.transform.localPosition = Vector3.zero;
         triggereBox.size = new Vector3(triggeredRange.x, triggeredRange.y, 1);
         triggereBox.center = new Vector3(triggeredRange.x / 2, triggeredRange.y / 2, 0);
