@@ -123,7 +123,7 @@
 
 ## 详解---几种状态、动作之间切换  ##
 
-![](https://i.imgur.com/abwk0QW.png)
+![State](https://i.imgur.com/Nr9mUkb.png)
 
 
 - 手指按下切换到---按下动作
